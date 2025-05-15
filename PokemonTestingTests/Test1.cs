@@ -30,6 +30,7 @@ public sealed class Test1
         //Test adjusted to use double as that's what I used down in the DamageHandler class.
 
         var x = new Mechanics.DamageHandler();
+
         Assert.AreEqual(outputInt, x.DamageCheck("Grass", inputInt));
     }
 }
