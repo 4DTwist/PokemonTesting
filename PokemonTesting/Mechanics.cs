@@ -45,10 +45,26 @@ public class Mechanics
 
         public double DamageCheck(string damageType, double damage)
         {
+            //If 0 or less damage, return 0.
             if (damage < 0)
             {
-                damage = 0;
+                return 0;
             }
+
+            if (damageType == null)
+            {
+                return damage;
+            }
+
+            //Does the requested damage type exist?
+            if (DamageMultipliers.ContainsKey(damageType) == false)
+            {
+                //Assume typeless, return raw damage.
+                //If we ever have a "Null" or "Void" type, we'll want it to have resistance like anything else.
+                return damage;
+            }
+
+            //Multiply by the types modifier.
             return damage * (DamageMultipliers[damageType]);
         }
     }
