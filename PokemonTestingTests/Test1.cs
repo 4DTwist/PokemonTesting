@@ -33,4 +33,29 @@ public sealed class Test1
 
         Assert.AreEqual(outputInt, x.DamageCheck("Grass", inputInt));
     }
+
+
+
+
+    [TestMethod]
+    [DataRow("Grass", 70)]
+    [DataRow("Fire", 70)]
+    [DataRow("Water", 70)]
+    [DataRow("Normal", 70)]
+    [DataRow("Null", 70)]
+    [DataRow(null, 70)]
+    [DataRow("",70)]
+    
+    public void Test_AllTypesDamageHandler(string type, double inputInt)
+    {
+        //Expected output is identical.
+        //Any unexpected should be considered typeless, and deal damage with no modifier.
+        var x = new Mechanics.DamageHandler();
+
+        Assert.AreEqual(inputInt, x.DamageCheck(type, inputInt));
+    }
+
+
+
+
 }
