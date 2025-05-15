@@ -45,6 +45,10 @@ public class Mechanics
 
         public double DamageCheck(string damageType, double damage)
         {
+            if (damage < 0)
+            {
+                damage = 0;
+            }
             return damage * (DamageMultipliers[damageType]);
         }
     }

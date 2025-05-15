@@ -16,18 +16,18 @@ public sealed class Test1
     [DataRow(0)]
     [DataRow(80)]
     [DataRow(100)]
-    public void Test_BaseDamageHandler(int inputInt)
+    public void Test_BaseDamageHandler(double inputInt)
     {
-        int outputInt = inputInt;
+        double outputInt = inputInt;
         if (outputInt < 0)
         {
             outputInt = 0;
         }
         //Expectations at this stage:
-        //ABS the number. Anything below 0 should be treated as 0.
         //Return the same number. It is being multiplied by 1 inside the method.
         //There will be further tests as the complexity of the system increases.
-        //We may run into issues using an Int as our numeric data type. Consider Double/Decimal etc. Probably Decimal.
+
+        //Test adjusted to use double as that's what I used down in the DamageHandler class.
 
         var x = new Mechanics.DamageHandler();
         Assert.AreEqual(outputInt, x.DamageCheck("Grass", inputInt));
