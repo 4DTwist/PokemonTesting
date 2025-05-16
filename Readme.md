@@ -1,0 +1,1 @@
+As of right now, this is just a practice project for me to tinker with some  programming concepts that needed a bit more refinement.
