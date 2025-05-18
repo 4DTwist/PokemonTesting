@@ -9,8 +9,8 @@ namespace PokemonTesting;
 /// </summary>
 interface IBasePokemonType
 {
-    void BaseTypeAttack(); //Base type attack. Not to be confused with the "Normal" type, which has some resistances.
-    void TakeDamage(string Type, double damage); //Multiplies incoming damage based on weaknesses or strengths.
+    double BaseTypeAttack(); //Base type attack. Not to be confused with the "Normal" type, which has some resistances.
+    double TakeDamage(string Type, double damage); //Multiplies incoming damage based on weaknesses or strengths.
     void Cry(); //Returns a string that the pokemon would say.
 }
 
@@ -20,15 +20,16 @@ interface IBasePokemonType
 public abstract class BasePokemonType : IBasePokemonType
 {
     private DamageHandler damageHandler = new DamageHandler();
-    public void BaseTypeAttack()
+    public double BaseTypeAttack()
     {
         Console.WriteLine("Basic Tackle!");
+        return 100;
     }
 
     //Passes the damage and type to its internal DamageHandler object.
-    public void TakeDamage(string Type, double damage)
+    public double TakeDamage(string Type, double damage)
     {
-        damageHandler.DamageCheck(Type, damage);
+        return damageHandler.DamageCheck(Type, damage);
     }
 
     public virtual void Cry()

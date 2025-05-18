@@ -77,13 +77,13 @@ public sealed class Test1
 
         //At the time of writing, TakeDamage does not store damage taken, or
         //return any data. Test is written to expect data.
-        //Assert.AreEqual(grassExpected, grass.TakeDamage(type, damageDealt));
-        //Assert.AreEqual(waterExpected, water.TakeDamage(type, damageDealt));
-        //Assert.AreEqual(grassExpected, fire.TakeDamage(type, damageDealt));
+        Assert.AreEqual(grassExpected, grass.TakeDamage(type, damageDealt));
+        Assert.AreEqual(waterExpected, water.TakeDamage(type, damageDealt));
+        Assert.AreEqual(grassExpected, fire.TakeDamage(type, damageDealt));
 
         //Forcing a throw at present to simulate this, given that this is a case
         //where the test needs new functionality, not work on existing methods.
-        Assert.IsTrue(false);
+        //Assert.IsTrue(false);
 
     }
 
