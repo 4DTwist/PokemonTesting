@@ -37,10 +37,65 @@ public class Mechanics
             //Focus Sash: Ensures the pokemon survives the hit on 1 HP
             //There is an ability that removes immunities, replacing them with neutral damage
 
-            DamageMultipliers.Add("Normal", 1);
-            DamageMultipliers.Add("Fire", 1);
-            DamageMultipliers.Add("Water", 1);
-            DamageMultipliers.Add("Grass", 1);
+            //Due to mechanical changes, values of 1 can be removed.
+            //Leaving here for now for readability, once type management is
+            //more mature, shall remove.
+            DamageMultipliers.Add("normal", 1);
+            DamageMultipliers.Add("fire", 1);
+            DamageMultipliers.Add("water", 1);
+            DamageMultipliers.Add("grass", 1);
+        }
+
+        //Multiplies each record against its counterpart.
+        //If counterpart does not exist, add.
+        //If result is 1, remove.
+        public void MergeDamageMultipliers(Dictionary<string, double> incMultis)
+        {
+            foreach (var x in incMultis.Keys)
+            {
+                if (DamageMultipliers.ContainsKey(x))
+                {
+                    //If exists, multiply together
+                    DamageMultipliers[x] *= incMultis[x];
+                }
+                else
+                {
+                    //If not, add.
+                    DamageMultipliers.Add(x, incMultis[x]);
+                }
+                if (DamageMultipliers[x] == 1)
+                {
+                    //If the record now == 1, remove it.
+                    //1 is handled as a direct pass-through.
+                    DamageMultipliers.Remove(x);
+                }
+            }
+        }
+
+        //Overrides specified damage multipliers.
+        //Could be merged with the above via a selector variable since it is
+        // a very similar loop, but readability would suffer a lot.
+        public void OverrideDamageMultipliers(Dictionary<string, double> incMultis)
+        {
+            foreach (var x in incMultis.Keys)
+            {
+                if (DamageMultipliers.ContainsKey(x))
+                {
+                    //If exists, override.
+                    DamageMultipliers[x] = incMultis[x];
+                }
+                else
+                {
+                    //If not, add.
+                    DamageMultipliers.Add(x, incMultis[x]);
+                }
+                if (DamageMultipliers[x] == 1)
+                {
+                    //If the record now == 1, remove it.
+                    //1 is handled as a direct pass-through.
+                    DamageMultipliers.Remove(x);
+                }
+            }
         }
 
         public double DamageCheck(string damageType, double damage)

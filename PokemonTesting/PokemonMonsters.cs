@@ -13,6 +13,13 @@ public class PokemonMonsters
         }
     }
 
+    public class Bulbatle : GrassType
+    {
+    
+}
+
+
+
 
     public class Charmander : FireType
     {
@@ -22,7 +29,7 @@ public class PokemonMonsters
         }
     }
 
-    public class Squirtle : FireType
+    public class Squirtle : WaterType
     {
         public override void Cry()
         {

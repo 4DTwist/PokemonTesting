@@ -19,7 +19,7 @@ interface IBasePokemonType
 //Inherits the Interface IBasePokemonType to ensure it has the bits it needs.
 public abstract class BasePokemonType : IBasePokemonType
 {
-    private DamageHandler damageHandler = new DamageHandler();
+    public DamageHandler damageHandler = new DamageHandler();
     public double BaseTypeAttack()
     {
         Console.WriteLine("Basic Tackle!");
@@ -42,6 +42,16 @@ public abstract class BasePokemonType : IBasePokemonType
 
 public abstract class GrassType : BasePokemonType
 {
+    public GrassType()
+    {
+        var x = new Dictionary<string, double>();
+        x.Add("fire", 2);
+        x.Add("water",0.5);
+        x.Add("grass", 0.5);
+
+        base.damageHandler.MergeDamageMultipliers(x);
+    }
+
     public void GrassTypeAttack()
     {
         Console.WriteLine("Razor Leaf!");
@@ -50,6 +60,16 @@ public abstract class GrassType : BasePokemonType
 
 public abstract class FireType : BasePokemonType
 {
+    public FireType()
+    {
+        var x = new Dictionary<string, double>();
+        x.Add("fire", 0.5);
+        x.Add("water",2);
+        x.Add("grass", 0.5);
+
+        base.damageHandler.MergeDamageMultipliers(x);
+    }
+
     public void FireTypeAttack()
     {
         Console.WriteLine("Ember!");
@@ -58,6 +78,16 @@ public abstract class FireType : BasePokemonType
 
 public abstract class WaterType : BasePokemonType
 {
+    public WaterType()
+    {
+        var x = new Dictionary<string, double>();
+        x.Add("fire", 0.5);
+        x.Add("water",0.5);
+        x.Add("grass", 2);
+
+        base.damageHandler.MergeDamageMultipliers(x);
+    }
+
     public void WaterTypeAttack()
     {
         Console.WriteLine("Water Gun!");

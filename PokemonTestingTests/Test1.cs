@@ -62,29 +62,28 @@ public sealed class Test1
 
 
     [TestMethod]
-    [DataRow("Normal", 100, 100, 100, 100)]
-    [DataRow("Fire", 100, 200, 50, 50)]
-    [DataRow("Water", 100, 50, 50, 200)]
-    [DataRow("Grass", 100, 50, 200, 50)]
+    [DataRow(null, 100, 100, 100, 100)]
+    [DataRow("", 100, 100, 100, 100)]
+    [DataRow("non-existant type", 100, 100, 100, 100)]
+    [DataRow("normal", 100, 100, 100, 100)]
+    [DataRow("grass", 100, 50, 200, 50)]
+    [DataRow("water", 100, 50, 50, 200)]
+    [DataRow("fire", 100, 200, 50, 50)]
     public void Test_DamageTypeModifiers(string type, double damageDealt, double grassExpected, double waterExpected, int fireExpected)
     {
         //Check that a pokemon with a type has different damage modifiers.
-        //For reference, each should be resistant to 2, weak to 1 and neutral to normal.
+        //Normal, Undefined are expected to treat the multiplier as 1, so stay the same.
+
+        //For reference Fire, Water and Grass each should be resistant to 2, weak to 1 and neutral to normal.
 
         Bulbasaur grass = new Bulbasaur();  //Weak to fire
         Squirtle water = new Squirtle();    //Weak to grass
-        Charmander fire = new Charmander();//Weak to water
+        Charmander fire = new Charmander(); //Weak to water
 
-        //At the time of writing, TakeDamage does not store damage taken, or
-        //return any data. Test is written to expect data.
+        //Check that each Pokemon took the expected damage from this type.
         Assert.AreEqual(grassExpected, grass.TakeDamage(type, damageDealt));
         Assert.AreEqual(waterExpected, water.TakeDamage(type, damageDealt));
-        Assert.AreEqual(grassExpected, fire.TakeDamage(type, damageDealt));
-
-        //Forcing a throw at present to simulate this, given that this is a case
-        //where the test needs new functionality, not work on existing methods.
-        //Assert.IsTrue(false);
-
+        Assert.AreEqual(fireExpected, fire.TakeDamage(type, damageDealt));
     }
 
 
