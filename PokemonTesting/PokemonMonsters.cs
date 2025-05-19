@@ -13,13 +13,6 @@ public class PokemonMonsters
         }
     }
 
-    public class Bulbatle : GrassType
-    {
-    
-}
-
-
-
 
     public class Charmander : FireType
     {
