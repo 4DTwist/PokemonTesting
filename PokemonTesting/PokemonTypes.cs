@@ -49,7 +49,7 @@ public abstract class GrassType : BasePokemonType
         x.Add("water",0.5);
         x.Add("grass", 0.5);
 
-        base.damageHandler.MergeDamageMultipliers(x);
+        damageHandler.MergeDamageMultipliers(x);
     }
 
     public void GrassTypeAttack()

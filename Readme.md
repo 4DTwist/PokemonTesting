@@ -12,3 +12,5 @@ Roughly speaking here...
 - That is then inherited from for a few types, which then add strengths and weaknesses to their base class, and allow for different attack methods.
 - Finally a class with the Pokemons name inherits that type. That is then tested.
 
+
+

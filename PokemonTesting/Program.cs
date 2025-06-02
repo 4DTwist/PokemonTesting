@@ -1,6 +1,8 @@
 using System.Collections;
 using Microsoft.VisualBasic;
+using static PokemonTesting.EnumeratorTestingClass;
 using static PokemonTesting.PokemonMonsters;
+
 
 namespace PokemonTesting;
 
@@ -39,6 +41,32 @@ public class PokemonApp
             poke.BaseTypeAttack();
             Console.WriteLine();
         }
+
+
+
+        PokemonList<BasePokemonType> listOfPokes = new PokemonList<BasePokemonType>();
+
+        //listOfPokes.Add(x);
+        listOfPokes.AddRange([x, y]);
+
+
+
+
+
+        foreach (BasePokemonType pokeInLoop in listOfPokes)
+        {
+            pokeInLoop.Cry();
+        }
+
+
+
+        Console.WriteLine(listOfPokes.ExtendedMethodExample());
+
+
+
+
+
+
 
 
 
