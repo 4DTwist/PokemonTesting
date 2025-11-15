@@ -1,12 +1,15 @@
 using System;
 using System.Collections;
+using System.IO.Compression;
 using Microsoft.AspNetCore.Http.Features;
+using Microsoft.VisualBasic;
 using static PokemonTesting.EnumeratorTestingClass;
 
 namespace PokemonTesting;
 
 public class EnumeratorTestingClass
 {
+
 
     public class PokemonList<T> : IEnumerable<T>
     {
